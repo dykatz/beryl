@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Wiki - {{ $.Class.Name }} - {{ $.School }} - Berryl</title>
+		<style>
+			body { font-family: sans-serif; background-color: beige; color: #333; margin: 0 }
+			.header { display: flex; background-color: #333; color: beige }
+			.header a { padding: 14px 20px; text-decoration: none; text-align: center; color: beige }
+			.header a:active { color: black; background-color: beige }
+			.header a:hover { color: black; background-color: white }
+			.header .current { padding: 14px 20px; background-color: beige; color: #333 }
+			.header .search { padding: 14px 20px; margin-left: auto }
+			.main { max-width: 1000px; margin: 40px auto; color: #333 }
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<a href="/">{{ $.School }}</a>
+			<a href="/class/{{ $.Class.Num }}">{{ $.Class.Name }}</a>
+			<a href="/class/{{ $.Class.Num }}/assignments">Assignments</a>
+			<a href="/class/{{ $.Class.Num }}/discussions">Discussions</a>
+			<div class="current">Wiki</div>
+			<div class="search">Search</div>
+		</div>
+		<div class="main">
+			Hello!
+		</div>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Assignments - {{ $.Class.Name }} - {{ $.School }} - Berryl</title>
+		<style>
+			body { font-family: sans-serif; background-color: beige; color: #333; margin: 0 }
+			.header { display: flex; background-color: #333; color: beige }
+			.header a { padding: 14px 20px; text-decoration: none; text-align: center; color: beige }
+			.header a:active { color: black; background-color: beige }
+			.header a:hover { color: black; background-color: white }
+			.header .current { padding: 14px 20px; background-color: beige; color: #333 }
+			.header .search { padding: 14px 20px; margin-left: auto }
+			.main { max-width: 1000px; margin: 40px auto; color: #333 }
+			.main .assignment { padding: 14px 20px; margin: auto; display: flex }
+			.main .assignment a { margin-right: auto; flex: 60% }
+			.main .assignment .grade { padding: 0 20px; flex: 20% }
+			.main .assignment .date { flex: 20% }
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<a href="/">{{ $.School }}</a>
+			<a href="/class/{{ $.Class.Num }}">{{ $.Class.Name }}</a>
+			<div class="current">Assignments</div>
+			<a href="/class/{{ $.Class.Num }}/discussions">Discussions</a>
+			<a href="/class/{{ $.Class.Num }}/wiki">Wiki</a>
+			<div class="search">Search</div>
+		</div>
+		<div class="main">
+			<hr>
+			{{ range $i, $a := $.Assignments }}
+			<div class="assignment">
+				<a href="/class/{{ $.Class.Num }}/assignments/{{ $a.Num }}">{{ $a.Name }}</a>
+				<div class="grade">{{ if $a.Graded }}{{ $a.Grade }}{{ else }}TBD{{ end }} / {{ $a.MaxGrade }}</div>
+				<div class="date">Due {{ $a.DueDate }}</div>
+			</div>
+			<hr>
+			{{ end }}
+		</div>
+	</body>
+</html>
