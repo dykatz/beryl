@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Wiki - {{ $.Class.Name }} - {{ $.School }} - Beryl</title>
+		<title>Assignments - {{ $.Class.Name }} - {{ $.School }} - Beryl</title>
 		<style>
 			body { font-family: sans-serif; background-color: beige; color: #333; margin: 0 }
 			.header { display: flex; background-color: #333; color: beige }
@@ -12,28 +12,30 @@
 			.header a:hover { color: black; background-color: white }
 			.header .current { padding: 14px 20px; background-color: beige; color: #333 }
 			.header .search { padding: 14px 20px; margin-left: auto }
-			.main { color: #333; display: flex }
-			.main .sidebar { flex: 20% }
-			.main .content { flex: 80% }
-			.main .content h1 { padding: 14px 20px }
+			.main { max-width: 1000px; margin: 40px auto; color: #333 }
+			.main .assignment { padding: 14px 20px; margin: auto; display: flex }
+			.main .assignment a { margin-right: auto; flex: 60% }
+			.main .assignment .grade { padding: 0 20px; flex: 20% }
+			.main .assignment .date { flex: 20% }
 		</style>
 	</head>
 	<body>
 		<div class="header">
 			<a href="/">{{ $.School }}</a>
 			<a href="/class/{{ $.Class.Num }}">{{ $.Class.Name }}</a>
-			<a href="/class/{{ $.Class.Num }}/assignments">Assignments</a>
+			<div class="current">Assignments</div>
 			<a href="/class/{{ $.Class.Num }}/discussions">Discussions</a>
-			<div class="current">Wiki</div>
+			<a href="/class/{{ $.Class.Num }}/wiki">Wiki</a>
 			<div class="search">Search</div>
 		</div>
 		<div class="main">
-			<div class="sidebar"></div>
 			<hr>
-			<div class="content">
-				<h1>{{ $.Page }}</h1>
-				<hr>
+			<div class="assignment">
+				<a href="/class/{{ $.Class.Num }}/assignment/{{ $.Assignment.Num }}">{{ $.Assignment.Name }}</a>
+				<div class="grade">{{ if $.Assignment.Graded }}{{ $.Assignment.Grade }}{{ else }}TBD{{ end }} / {{ $.Assignment.MaxGrade }}</div>
+				<div class="date">Due {{ $.Assignment.DueDate }}</div>
 			</div>
+			<hr>
 		</div>
 	</body>
 </html>

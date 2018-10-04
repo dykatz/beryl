@@ -32,7 +32,7 @@
 			<hr>
 			{{ range $i, $a := $.Assignments }}
 			<div class="assignment">
-				<a href="/class/{{ $.Class.Num }}/assignments/{{ $a.Num }}">{{ $a.Name }}</a>
+				<a href="/class/{{ $.Class.Num }}/assignment/{{ $a.Num }}">{{ $a.Name }}</a>
 				<div class="grade">{{ if $a.Graded }}{{ $a.Grade }}{{ else }}TBD{{ end }} / {{ $a.MaxGrade }}</div>
 				<div class="date">Due {{ $a.DueDate }}</div>
 			</div>

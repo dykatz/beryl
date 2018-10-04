@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>{{ $.Discussion.Subject }} - {{ $.Class.Name }} - {{ $.School }} - Beryl</title>
+		<style>
+			body { font-family: sans-serif; background-color: beige; color: #333; margin: 0 }
+			.header { display: flex; background-color: #333; color: beige }
+			.header a { padding: 14px 20px; text-decoration: none; text-align: center; color: beige }
+			.header a:active { color: black; background-color: beige }
+			.header a:hover { color: black; background-color: white }
+			.header .current { padding: 14px 20px; background-color: beige; color: #333 }
+			.header .search { padding: 14px 20px; margin-left: auto }
+			.main { max-width: 1000px; margin: 40px auto; color: #333 }
+			.main .discussion { padding: 14px 20px; margin: auto; display: flex }
+			.main .discussion a { margin-right: auto; flex: 60% }
+			.main .discussion .started { flex: 20% }
+			.main .discussion .active { flex: 20% }
+			.main .comment { padding: 14px 20px; margin: auto; display: flex }
+			.main .comment .comtext { margin-right: auto; flex: 40% }
+			.main .comment .author { flex: 20% }
+			.main .comment .posted { flex: 20% }
+			.main .comment .edited { flex: 20% }
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<a href="/">{{ $.School }}</a>
+			<a href="/class/{{ $.Class.Num }}">{{ $.Class.Name }}</a>
+			<a href="/class/{{ $.Class.Num }}/assignments">Assignments</a>
+			<a href="/class/{{ $.Class.Num}}/discussions" class="current">Discussions</a>
+			<a href="/class/{{ $.Class.Num }}/wiki">Wiki</a>
+			<div class="search">Search</div>
+		</div>
+		<div class="main">
+			<div class="discussion">
+				<a href="/class/{{ $.Class.Num }}/discussion/{{ $.Discussion.Num }}">{{ $.Discussion.Subject }}</a>
+				<div class="started">Started {{ $.Discussion.DateStarted }}</div>
+				<div class="active">Active {{ $.Discussion.DateActive }}</div>
+			</div>
+			<hr>
+			{{ range $i, $d := $.Comments }}
+			<div class="comment">
+				<div class="comtext">{{ $d.Text }}</div>
+				<div class="author">By {{ $d.Author }}</div>
+				<div class="posted">Posted {{ $d.DatePosted }}</div>
+				<div class="edited">{{ if $d.Edited }}Edited {{ $d.DateEdited }}{{ end }}</div>
+			</div>
+			<hr>
+			{{ end }}
+		</div>
+	</body>
+</html>
