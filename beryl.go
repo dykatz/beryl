@@ -31,9 +31,9 @@ type Discussion struct {
 }
 
 type Comment struct {
-	Text string
-	Author string
-	Edited bool
+	Text       string
+	Author     string
+	Edited     bool
 	DatePosted string
 	DateEdited string
 }
@@ -88,8 +88,8 @@ func handleAssignment(c *gin.Context) {
 	}
 
 	c.HTML(http.StatusOK, "assignment", gin.H{
-		"School": "UW",
-		"Class": Class{class, "CSS300"},
+		"School":     "UW",
+		"Class":      Class{class, "CSS300"},
 		"Assignment": Assignment{assignment, "uwu", false, 0, 5, "tomorrow"},
 	})
 }
@@ -126,8 +126,8 @@ func handleDiscussion(c *gin.Context) {
 	}
 
 	c.HTML(http.StatusOK, "discussion", gin.H{
-		"School": "UW",
-		"Class": Class{class, "CSS300"},
+		"School":     "UW",
+		"Class":      Class{class, "CSS300"},
 		"Discussion": Discussion{discussion, "foo", 13, "two days ago", "yesterday"},
 		"Comments": []Comment{
 			Comment{"why post here", "unpleasant person", false, "yesterday", ""},
@@ -147,7 +147,7 @@ func handleWiki(c *gin.Context) {
 	c.HTML(http.StatusOK, "wiki", gin.H{
 		"School": "UW",
 		"Class":  Class{class, "CSS300"},
-		"Page": page,
+		"Page":   page,
 	})
 }
 
