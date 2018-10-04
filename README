@@ -1,0 +1,52 @@
+Beryl
+=====
+
+Intro
+-----
+
+A stupid simple learning management system.
+
+This project exists for a number of reasons:
+
+- I wanted to learn Go
+- I wanted to practice fullstack development
+- Educational software can always get better
+- I used Canvas back in college and figured I couldn't possibly do it worse
+
+Some goals:
+
+- Be as simple to use as possible
+- Be as simple internally as possible
+- Keep JavaScript to a minimum
+- Keep CSS and HTML seperated
+
+Some non-goals:
+
+- Make the fans spin on your laptop when you load the pages
+- Take over a second to render the page after it has downloaded
+- Ugh
+
+Why the name?
+
+Beryl is short for Berylium, the 4th element on the periodic table. It's just a
+codename for now.
+
+Quickstart
+----------
+
+Install go, and then run the following to download dependencies:
+
+	$ go get github.com/gin-gonic/gin
+	$ go get github.com/gin-contrib/multitemplate
+
+To build and run the program:
+
+	$ git clone github.com/muddmaker/beryl
+	$ cd beryl
+	$ go build
+	$ ./beryl
+
+Legal Stuff
+-----------
+
+ISC License. See COPYING.

@@ -8,12 +8,12 @@ import (
 )
 
 type Class struct {
-	Num		int
+	Num	int
 	Name	string
 }
 
 type Assignment struct {
-	Num			int
+	Num		int
 	Name		string
 	Graded		bool
 	Grade		int
@@ -22,11 +22,11 @@ type Assignment struct {
 }
 
 type Discussion struct {
-	Num				int
-	Subject			string
+	Num		int
+	Subject		string
 	CommentCount	int
-	DateStarted		string
-	DateActive		string
+	DateStarted	string
+	DateActive	string
 }
 
 func handleClass(c *gin.Context) {
