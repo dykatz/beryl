@@ -20,13 +20,24 @@
 			</div>
 		</div>
 		<div id="content">
-			<hr>
-			<div class="assignment">
-				<a href="/class/{{ $.Class.Num }}/assignment/{{ $.Assignment.Num }}">{{ $.Assignment.Name }}</a>
-				<div class="grade">{{ if $.Assignment.Graded }}{{ $.Assignment.Grade }}{{ else }}TBD{{ end }} / {{ $.Assignment.MaxGrade }}</div>
-				<div class="date">Due {{ $.Assignment.DueDate }}</div>
+			<div id="nav">
+				<ul>
+					<li><a href="/class/{{ $.Class.Num }}/assignment/{{ $.Assignment.Num }}">
+						{{ $.Assignment.Name }}
+					</a></li>
+					<li><a>Due {{ $.Assignment.DueDate }}</a></li>
+					<li><a>
+						{{ if $.Assignment.Graded }}
+							{{ $.Assignment.Grade }}
+						{{ else }}
+							TBD
+						{{ end }} / {{ $.Assignment.MaxGrade }}
+					</a></li>
+				</ul>
 			</div>
-			<hr>
+			<div id="main">
+				Hello!
+			</div>
 		</div>
 	</body>
 </html>

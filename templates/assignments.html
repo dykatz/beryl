@@ -22,16 +22,26 @@
 		<div id="content">
 			<div id="nav">
 				<ul>
-					<li><a>Overall grades go here!</a></li>
+					<li><a>{{ $.CurrentGrade }}%</a></li>
+					<li><a>{{ $.MinGrade }}% minimum</a></li>
+				</ul>
+				<hr>
+				<ul>
+					{{ range $i, $c := $.Categories }}
+					<li><a>{{ $c.Name }} ({{ $c.Weight }}%{{ if not $i }} weight{{ end }})</a></li>
+					{{ end }}
 				</ul>
 			</div>
 			<div id="main">
 				{{ range $i, $a := $.Assignments }}
 				{{ if $i }}<hr>{{ end }}
-				<div>
+				<div id="entry">
 					<a href="/class/{{ $.Class.Num }}/assignment/{{ $a.Num }}">{{ $a.Name }}</a>
-					<div class="grade">{{ if $a.Graded }}{{ $a.Grade }}{{ else }}TBD{{ end }} / {{ $a.MaxGrade }}</div>
-					<div class="date">Due {{ $a.DueDate }}</div>
+					<div class="right">
+						<a>{{ $a.Category }}</a>
+						<a>{{ if $a.Graded }}{{ $a.Grade }}{{ else }}TBD{{ end }} / {{ $a.MaxGrade }}</a>
+						<a>Due {{ $a.DueDate }}</a>
+					</div>
 				</div>
 				{{ end }}
 			</div>

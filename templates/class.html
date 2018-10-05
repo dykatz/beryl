@@ -21,6 +21,11 @@
 		</div>
 		<div id="content">
 			<div id="nav">
+				<ul>
+					{{ range $i, $u := $.Users }}
+					<li><a href="/user/{{ $u.Num }}">{{ $u.Name }}</a></li>
+					{{ end }}
+				</ul>
 			</div>
 			<div id="main">
 				Hello!

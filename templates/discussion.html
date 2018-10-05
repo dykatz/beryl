@@ -20,21 +20,24 @@
 			</div>
 		</div>
 		<div id="content">
-			<div class="discussion">
-				<a href="/class/{{ $.Class.Num }}/discussion/{{ $.Discussion.Num }}">{{ $.Discussion.Subject }}</a>
-				<div class="started">Started {{ $.Discussion.DateStarted }}</div>
-				<div class="active">Active {{ $.Discussion.DateActive }}</div>
+			<div id="nav">
+				<ul>
+					<li><a href="/class/{{ $.Class.Num }}/discussion/{{ $.Discussion.Num }}">{{ $.Discussion.Subject }}</a></li>
+					<li><a>Started {{ $.Discussion.DateStarted }}</a></li>
+					<li><a>Active {{ $.Discussion.DateActive }}</a></li>
+				</ul>
 			</div>
-			<hr>
-			{{ range $i, $d := $.Comments }}
-			<div class="comment">
-				<div class="comtext">{{ $d.Text }}</div>
-				<div class="author">By {{ $d.Author }}</div>
-				<div class="posted">Posted {{ $d.DatePosted }}</div>
-				<div class="edited">{{ if $d.Edited }}Edited {{ $d.DateEdited }}{{ end }}</div>
+			<div id="main">
+				{{ range $i, $d := $.Comments }}
+				{{ if $i }}<hr>{{ end }}
+				<div class="comment">
+					<div class="comtext">{{ $d.Text }}</div>
+					<div class="author">By {{ $d.Author }}</div>
+					<div class="posted">Posted {{ $d.DatePosted }}</div>
+					<div class="edited">{{ if $d.Edited }}Edited {{ $d.DateEdited }}{{ end }}</div>
+				</div>
+				{{ end }}
 			</div>
-			<hr>
-			{{ end }}
 		</div>
 	</body>
 </html>
