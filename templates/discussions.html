@@ -4,42 +4,34 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Discussions - {{ $.Class.Name }} - {{ $.School }} - Beryl</title>
-		<style>
-			body { font-family: sans-serif; background-color: beige; color: #333; margin: 0 }
-			.header { display: flex; background-color: #333; color: beige }
-			.header a { padding: 14px 20px; text-decoration: none; text-align: center; color: beige }
-			.header a:active { color: black; background-color: beige }
-			.header a:hover { color: black; background-color: white }
-			.header .current { padding: 14px 20px; background-color: beige; color: #333 }
-			.header .search { padding: 14px 20px; margin-left: auto }
-			.main { max-width: 1000px; margin: 40px auto; color: #333 }
-			.main .discussion { padding: 14px 20px; margin: auto; display: flex }
-			.main .discussion a { margin-right: auto; flex: 40% }
-			.main .discussion .comments { flex: 20% }
-			.main .discussion .started { flex: 20% }
-			.main .discussion .active { flex: 20% }
-		</style>
+		<link rel="stylesheet" type="text/css" href="/style.css">
 	</head>
 	<body>
-		<div class="header">
-			<a href="/">{{ $.School }}</a>
-			<a href="/class/{{ $.Class.Num }}">{{ $.Class.Name }}</a>
-			<a href="/class/{{ $.Class.Num }}/assignments">Assignments</a>
-			<div class="current">Discussions</div>
-			<a href="/class/{{ $.Class.Num }}/wiki">Wiki</a>
-			<div class="search">Search</div>
-		</div>
-		<div class="main">
-			<hr>
-			{{ range $i, $d := $.Discussions }}
-			<div class="discussion">
-				<a href="/class/{{ $.Class.Num }}/discussion/{{ $d.Num }}">{{ $d.Subject }}</a>
-				<div class="comments">{{ $d.CommentCount }} Comments</div>
-				<div class="started">Started {{ $d.DateStarted }}</div>
-				<div class="active">Active {{ $d.DateActive }}</div>
+		<div id="menu">
+			<div class="left">
+				<a href="/">{{ $.School }}</a>
+				<a href="/class/{{ $.Class.Num }}">{{ $.Class.Name }}</a>
+				<a href="/class/{{ $.Class.Num }}/assignments">Assignments</a>
+				<a class="thisSite" href="/class/{{ $.Class.Num }}/discussions">Discussions</a>
+				<a href="/class/{{ $.Class.Num }}/wiki">Wiki</a>
 			</div>
-			<hr>
-			{{ end }}
+			<div class="right">
+				<a>Search</a>
+			</div>
+		</div>
+		<div id="content">
+			<div id="nav"></div>
+			<div id="main">
+				{{ range $i, $d := $.Discussions }}
+				{{ if $i }}<hr>{{ end }}
+				<div>
+					<a href="/class/{{ $.Class.Num }}/discussion/{{ $d.Num }}">{{ $d.Subject }}</a>
+					<div>{{ $d.CommentCount }} Comments</div>
+					<div>Started {{ $d.DateStarted }}</div>
+					<div>Active {{ $d.DateActive }}</div>
+				</div>
+				{{ end }}
+			</div>
 		</div>
 	</body>
 </html>

@@ -169,6 +169,8 @@ func main() {
 	r := gin.Default()
 	r.HTMLRender = createRender()
 
+	r.StaticFile("/style.css", "assets/style.css")
+
 	r.GET("/class/:class", handleClass)
 	r.GET("/class/:class/assignments", handleAssignments)
 	r.GET("/class/:class/assignment/:assignment", handleAssignment)
